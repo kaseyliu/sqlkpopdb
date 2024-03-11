@@ -1,2 +1,2 @@
-# sqlkpopdb
-A React App to create frontend for our SQL database on Kpop. 
+# Kpop SQL Database
+This is a React App to create the frontend/interactive web app for our SQL database on Kpop. 
