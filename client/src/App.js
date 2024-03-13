@@ -1,19 +1,21 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import Companies from "./pages/Companies";
+import Add from "./pages/Add";
+import Update from "./pages/Update";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <div>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element/>
+        <Route path="/" element={<Companies />} />
+        <Route path="/add" element={<Add />} />
+        <Route path="/update" element={<Update />} />
       </Routes>
-      </BrowserRouter>
+    </BrowserRouter>
     </div>
+
   );
 }
-
 export default App;
