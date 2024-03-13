@@ -10,9 +10,9 @@ const Groups = () => {
     useEffect(()=>{
         const fetchAllBooks = async ()=> {
             try {
-                const res = await axios.get(URL + "/groups");
+                const res = await axios.get(URL + "/kgroups");
                 console.log(res.data);
-                setCompanies(res.data);
+                setGroups(res.data);
             } catch(err){
                 console.log(err);
             }
