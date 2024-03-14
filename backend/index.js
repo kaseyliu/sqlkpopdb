@@ -38,7 +38,15 @@ app.get("/kgroups", (req, res)=>{
 
 
 app.get("/artists", (req, res)=>{
-    const q = "SELECT * FROM ARTIST a JOIN KGROUP g ON g.G_ID=a.A_GROUPID"
+    const q = "SELECT * FROM ARTIST a LEFT JOIN KGROUP g ON g.G_ID=a.A_GROUPID"
+    db.query(q, (err, data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get("/songs", (req, res)=>{
+    const q = "SELECT * FROM SONG s LEFT JOIN ALBUM a ON s.ALBUM_ID=a.ALBUM_ID;"
     db.query(q, (err, data)=>{
         if(err) return res.json(err)
         return res.json(data)

@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 const Navbar = () => {
     return (
         <div className='navBar'>
-            <Grid templateColumns='repeat(8, 1fr)' gap={6}>
+            <Grid bg='purple.50' templateColumns='repeat(8, 1fr)' gap={6}>
                 <Button colorScheme='teal' variant='ghost'>
                     <RouterLink to="/">Home</RouterLink>
                 </Button>
@@ -17,6 +17,9 @@ const Navbar = () => {
                 </Button>
                 <Button colorScheme='teal' variant='ghost'>
                     <RouterLink to="/artists">Artists</RouterLink>
+                </Button>
+                <Button colorScheme='teal' variant='ghost'>
+                    <RouterLink to="/songs">Songs</RouterLink>
                 </Button>
             </Grid>
             <Divider orientation='horizontal' />

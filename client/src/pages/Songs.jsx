@@ -5,40 +5,36 @@ import { Heading, SimpleGrid, Button } from '@chakra-ui/react'
 import SearchBar from "../components/SearchBar"
 import { Stack, Radio, RadioGroup } from '@chakra-ui/react'
 
-const Artists = () => {
-    const [artists, setArtists] = useState([]);
-    const [filteredArtists, setFilteredArtists] = useState([]);
-    const [filter, setFilter] = useState('A_STAGENAME');
+const Songs = () => {
+    const [songs, setSongs] = useState([]);
+    const [filteredSongs, setFilteredSongs] = useState([]);
+    const [filter, setFilter] = useState('SONG_NAME');
     const URL = "http://localhost:8800"
     
     // getting all artist
     useEffect(()=>{
-        const fetchAllArtists = async ()=> {
+        const fetchAllSongs = async ()=> {
             try {
-                const res = await axios.get(URL + "/artists");
+                const res = await axios.get(URL + "/songs");
                 console.log(res.data);
-                setArtists(res.data);
-                setFilteredArtists(res.data);
+                setSongs(res.data);
+                setFilteredSongs(res.data);
             } catch(err){
                 console.log(err);
             }
         }
-        fetchAllArtists();
+        fetchAllSongs();
     }, []);
 
-    // select filter
-    // const selectFilter = () => {
-    //     const [value, setValue] = useState('');
-    //   }
 
     // search bar
     const handleSearch = (searchVal) => {
         if (searchVal === '') {
-          setFilteredArtists(artists);
+          setFilteredSongs(songs);
           return;
         }
       
-        const filterBySearch = artists.filter((item) => {
+        const filterBySearch = songs.filter((item) => {
           const searchValue = searchVal.toLowerCase();
       
           // Check if the filter property exists in the artist object
@@ -50,41 +46,41 @@ const Artists = () => {
           return false;
         });
       
-        setFilteredArtists(filterBySearch);
+        setFilteredSongs(filterBySearch);
       };
 
     return (
         <div className='company'>
-            <Heading size='4xl' color='teal'>Artists</Heading>
+            <Heading size='4xl' color='teal'>Songs</Heading>
             <br/>
-            <Button>Add new artist</Button>
+            <Button>Add new song</Button>
             <br />
             <br />
             <SearchBar onSearch={handleSearch} />
             <RadioGroup onChange={setFilter} value={filter} isExclusive>
                 <Stack direction='row'>
-                    <Radio value='A_STAGENAME'>Stage Name</Radio>
-                    <Radio value='A_LNAME'>Last Name</Radio>
-                    <Radio value='A_FNAME'>First Name</Radio>
-                    <Radio value='G_NAME'>Group Name</Radio>
-                    <Radio value='G_DEBUT'>Debut Year</Radio>
+                    <Radio value='SONG_NAME'>Song Name</Radio>
+                    <Radio value='ALBUM_NAME'>Album Name</Radio>
+                    <Radio value='CONCEPT'>Concept</Radio>
+                    <Radio value='ARTIST'>Artist</Radio>
+                    <Radio value='RELEASE_DATE'>Release Date</Radio>
                 </Stack>
             </RadioGroup>
             <br />
             <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(300px, 1fr))'>
-                {filteredArtists.map(artist=>(
+                {filteredSongs.map(song=>(
                     <Card variant='outline'>
                         <CardHeader>
-                            <Heading size='md'> {artist.A_STAGENAME}</Heading>
+                            <Heading size='md'> {song.SONG_NAME}</Heading>
                         </CardHeader>
                         <CardBody>
-                            Full Name: {artist.A_LNAME} {artist.A_FNAME} 
+                            Album: {song.ALBUM_NAME}
                             <br/>
-                            Group: {artist.G_NAME}
+                            Artist: {song.ARTIST}
                             <br/>
-                            Birth Year: {artist.A_BIRTHYEAR}
+                            Concept: {song.CONCEPT}
                             <br/>
-                            Debut Date: {artist.G_DEBUT}        
+                            Release Date: {song.RELEASE_DATE}        
                         </CardBody>
                     </Card>
                 ))}
@@ -93,4 +89,4 @@ const Artists = () => {
     )
 }
 
-export default Artists;
+export default Songs;

@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }) => {
       />
       <Input
         type="text"
-        placeholder="Search by name..."
+        placeholder="Search by..."
         value={searchVal}
         onChange={(e) => setSearchVal(e.target.value)}
         onKeyPress={(e) => {
