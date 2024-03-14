@@ -8,6 +8,7 @@ import Add from "./pages/Add";
 import Update from "./pages/Update";
 import Groups from "./pages/Groups";
 import Home from "./pages/Home";
+import Artists from "./pages/Artists";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/companies" element={<Companies />} />
+          <Route path="/artists" element={<Artists />} />
           <Route path="/groups" element={<Groups />} />
           <Route path="/add" element={<Add />} />
           <Route path="/update" element={<Update />} />

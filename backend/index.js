@@ -36,6 +36,15 @@ app.get("/kgroups", (req, res)=>{
     })
 })
 
+
+app.get("/artists", (req, res)=>{
+    const q = "SELECT * FROM ARTIST a JOIN KGROUP g ON g.G_ID=a.A_GROUPID"
+    db.query(q, (err, data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
 // POST endpoints
 app.post("/companies", (req, res)=> {
     const q = "INSERT INTO COMPANY (`COMPANY_NAME`, `START_YEAR`, `CEO_FNAME`, `CEO_LNAME`) VALUES (?) "
