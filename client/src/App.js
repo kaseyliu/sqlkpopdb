@@ -4,7 +4,7 @@ import React from "react";
 import { ChakraProvider } from '@chakra-ui/react'
 import Navbar from "./pages/Navbar";
 import Companies from "./pages/Companies";
-import Add from "./components/Add";
+import Add from "./components/AddGroup";
 import Update from "./pages/Update";
 import Groups from "./pages/Groups";
 import Home from "./pages/Home";

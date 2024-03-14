@@ -4,6 +4,7 @@ import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import { Heading, SimpleGrid, Button } from '@chakra-ui/react'
 import SearchBar from "../components/SearchBar"
 import { Stack, Radio, RadioGroup } from '@chakra-ui/react'
+import AddGroup from "../components/AddGroup"
 
 const Groups = () => {
     const [groups, setGroups] = useState([]);
@@ -52,7 +53,7 @@ const Groups = () => {
         <div className='company'>
             <Heading size='4xl' color='teal'>Groups</Heading>
             <br/>
-            <Button>Add new group</Button>
+            <AddGroup/>
             <br />
             <br />
             <SearchBar onSearch={handleSearch} />

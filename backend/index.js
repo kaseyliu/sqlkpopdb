@@ -56,11 +56,11 @@ app.get("/songs", (req, res)=>{
 // POST endpoints
 app.post("/companies", (req, res)=> {
     const q = "INSERT INTO COMPANY (`COMPANY_NAME`, `START_YEAR`, `CEO_FNAME`, `CEO_LNAME`) VALUES (?) "
-    const values = [
-        "name from backend", 
-        1234, 
-        "lname from backend", 
-        "fname from backend"]
+    // const values = [
+    //     "name from backend", 
+    //     1234, 
+    //     "lname from backend", 
+    //     "fname from backend"]
     const valuesclient = [
         req.body.company_name,
         req.body.start_year,
@@ -70,6 +70,21 @@ app.post("/companies", (req, res)=> {
         db.query(q, [valuesclient], (err, data)=>{
             if(err) return res.json(err)
             return res.json("company created successfully")
+        })
+
+})
+
+app.post("/groups", (req, res)=> {
+    const q = "INSERT INTO KGROUP (`G_NAME`, `G_GEN`, `G_COMPANY`, `G_DEBUT`) VALUES (?) "
+    const values = [
+        req.body.name,
+        req.body.generation,
+        req.body.company,
+        req.body.debut,
+    ];
+        db.query(q, [values], (err, data)=>{
+            if(err) return res.json(err)
+            return res.json("group created successfully")
         })
 
 })
