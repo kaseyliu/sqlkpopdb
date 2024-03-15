@@ -53,6 +53,40 @@ app.get("/songs", (req, res)=>{
     })
 })
 
+app.get("/albums", (req, res)=>{
+    const q = "SELECT * FROM ALBUM;"
+    db.query(q, (err, data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get("/tours", (req, res)=>{
+    const q = "SELECT * FROM TOUR t LEFT JOIN ALBUM a ON t.ALBUM_ID=a.ALBUM_ID LEFT JOIN KGROUP r ON r.G_ID=t.GROUP_ID;"
+    db.query(q, (err, data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get("/concerts", (req, res)=>{
+    const q = "SELECT * FROM CONCERT c JOIN TOUR t ON c.TOUR_NAME=t.TOUR_NAME LEFT JOIN KGROUP r ON r.G_ID=t.GROUP_ID;"
+    db.query(q, (err, data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+app.get("/awards", (req, res)=>{
+    const q = "SELECT * FROM AWARD a JOIN KGROUP g ON g.G_ID=a.WINNER_ID;"
+    db.query(q, (err, data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+
+
 // POST endpoints
 app.post("/companies", (req, res)=> {
     const q = "INSERT INTO COMPANY (`COMPANY_NAME`, `START_YEAR`, `CEO_FNAME`, `CEO_LNAME`) VALUES (?) "

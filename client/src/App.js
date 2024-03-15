@@ -10,6 +10,10 @@ import Groups from "./pages/Groups";
 import Home from "./pages/Home";
 import Artists from "./pages/Artists";
 import Songs from "./pages/Songs";
+import Albums from "./pages/Albums";
+import Tours from "./pages/Tours";
+import Concerts from "./pages/Concerts";
+import Awards from "./pages/Awards";
 
 function App() {
   return (
@@ -22,9 +26,14 @@ function App() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/artists" element={<Artists />} />
           <Route path="/songs" element={<Songs />} />
+          <Route path="/albums" element={<Albums />} />
           <Route path="/groups" element={<Groups />} />
+          <Route path="/tours" element={<Tours />} />
+          <Route path="/concerts" element={<Concerts />} />
+          <Route path="/awards" element={<Awards />} />
           <Route path="/add" element={<Add />} />
           <Route path="/update" element={<Update />} />
+          
         </Routes>
       </BrowserRouter>
       </div>
